@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.backends.backend_tkagg import FigureCanvasTkinter
+# Remove this line: from matplotlib.backends.backend_tkagg import FigureCanvasTkinter
 
 class AdvancedPerceptron:
     def __init__(self, num_features, learning_rate=0.01):

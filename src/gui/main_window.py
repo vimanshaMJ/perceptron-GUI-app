@@ -3,11 +3,12 @@ from tkinter import ttk, messagebox, filedialog
 import numpy as np
 import pandas as pd
 from matplotlib.figure import Figure
-from matplotlib.backends.backend_tkagg import FigureCanvasTkinter, NavigationToolbar2Tk
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk  # Fixed import
 import threading
 
 from ..models.perceptron import AdvancedPerceptron
 from ..data.data_generator import DataGenerator
+
 
 class PerceptronGUI:
     def __init__(self, root):
@@ -118,7 +119,7 @@ class PerceptronGUI:
         self.fig = Figure(figsize=(8, 6), dpi=100)
         self.ax = self.fig.add_subplot(111)
         
-        self.canvas = FigureCanvasTkinter(self.fig, viz_frame)
+        self.canvas = FigureCanvasTkAgg(self.fig, viz_frame) 
         self.canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
         
         # Add toolbar
@@ -153,7 +154,7 @@ class PerceptronGUI:
         
         # Create training history plot
         self.history_fig = Figure(figsize=(6, 4), dpi=100)
-        self.history_canvas = FigureCanvasTkinter(self.history_fig, history_frame)
+        self.history_canvas = FigureCanvasTkAgg(self.history_fig, history_frame)
         self.history_canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
         
         # Export Tab
